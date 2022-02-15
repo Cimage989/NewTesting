@@ -1,0 +1,140 @@
+<template>
+    <div class="slds-m-left_medium" style="height:530px;background-color:white;border-radius: 5px;">
+    <div class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div slot="title">
+                    <h3> 
+                        <lightning-icon icon-name="doctype:overlay" size="small"></lightning-icon>           
+                    </h3>
+                </div>
+                <div class="slds-media__body">
+                    <h3 class="slds-card__header-title">
+                        <span><b>&nbsp;&nbsp;Template</b></span>
+                    </h3>
+                </div>
+                <div class="slds-no-flex">
+                    <button class="slds-button slds-button_brand" disabled={buttonDisable} onclick={Save}>Save</button>
+                </div>
+            </header>
+        </div>
+    </div>
+    <div style="margin-top: 1%;">
+        <lightning-button-icon class="slds-float_left slds-var-p-top_medium button" icon-name="utility:chevronleft"  alternative-text="chevronleft" onclick={back}></lightning-button-icon>                
+        <span class="vl slds-float_left slds-var-p-left_xx-small" style="font-size:16px;margin-right:5%;margin-top: 0%;"><b>New Template</b></span>
+        <h2 class="one">
+            <span class="a">
+                <template if:true={abutton}>
+                    <lightning-icon icon-name="action:check" alternative-text="Approved" title="Approved"></lightning-icon>
+                </template>
+                    <template if:false={abutton}>
+                        <button class="button5 slds-button slds-button_outline-brand">1</button>
+                    </template>
+                
+                <button class="btn default" style="color:blue;
+                border: none;"> Template Info &nbsp;&nbsp;&nbsp;&nbsp; -----------</button>
+            </span>
+            <span class="b" style="margin-top: 1%;">
+                <template if:true={bbutton}>
+                    <lightning-icon icon-name="action:check" alternative-text="Approved" title="Approved"></lightning-icon>
+                </template>
+                    <template if:false={bbutton}>
+                        <button class="button5 slds-button slds-button_outline-brand">2</button>
+                    </template>
+                
+                <button class="btn default" style="color:blue;
+                border: none;">Prepare Template &nbsp;&nbsp;&nbsp;&nbsp; -----------</button>
+            </span>
+            <span class="c">
+                <template if:true={cbutton}>
+                    <lightning-icon icon-name="action:check" alternative-text="Approved" title="Approved"></lightning-icon>
+                </template>
+                    <template if:false={cbutton}>
+                        <button class="button5 slds-button slds-button_outline-brand">3</button>
+                    </template>
+                
+                <button class="btn default" style="color:blue;
+                border: none;"> Setup</button>
+            </span>
+        </h2>
+    </div>
+    <hr/>
+    <template if:false={main}>
+                <div class="slds-m-horizontal_xx-large" style="margin-bottom:21%;margin-top:-4%">
+                    <lightning-input value={inputValue} type="input" onchange={nameChange} placeholder="Template Name"></lightning-input>
+                    <br/>
+                    <select class="slds-select" id="select-01" >
+                        <template for:each={objects} for:item="listViewItem">
+                           <option key={listViewItem.key} value={listViewItem.key}>{listViewItem.value}</option>
+                        </template>
+                   </select>
+                </div>
+                <br/>
+                <div class="slds-card__footer" style="text-align:right">
+    
+                    <button class="slds-button slds-button_outline-brand" onclick={back}>Previous</button>
+                    <button class="slds-button slds-button_outline-brand" onclick={Next}>Next</button>
+                </div>
+            
+            </template>
+            <template if:true={main}>
+                <div class="slds-col slds-m-horizontal_large">
+                    <template if:true={table}>
+                        <div class="row">
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col">
+                                    <lightning-input type ="file" onchange={handleFilesChange} name="file" label="Upload Doc File" multiple="false" accept=".docx" ></lightning-input>
+                                </div>
+                                <div class="slds-col">
+                                    <br/>
+                                    <template if:true={fileName}>
+                                        {fileName}
+                                    </template>
+                                    <lightning-button variant="brand" label="Upload File" title="Submit" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+                                </div>
+                            </div>
+                        </div>
+                   <!--     <template if:false={table}>
+                            <div class="slds-form--compound">
+                                <div class="slds-box">
+                                    <template if:true={files.Id}>
+                                        {files.Name}
+                                        <a href="javascript:void(0)" id={files.Id} onclick={deleteSelectedFile} style="margin-left:5%;margin-right:30%;">
+                                            <lightning-icon size="x-small" icon-name="utility:delete" alternative-text="Delete"></lightning-icon>
+                                        </a>
+                                        <button class="slds-button slds-button_brand" onclick={uploadAnother}>Upload Another</button>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>-->
+                    </template>
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="slds-select_container">
+                                    <select class="slds-select" id="select"  onchange={changeValue}>
+                                        <option value="">Select…</option>
+                                        <template for:each={optionsvalue} for:item='objectname'>
+                                            <option key={objectname} value={objectname}>{objectname}</option>
+                                        </template>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <lightning-button label="Add" title="Add" icon-name="utility:add" class="slds-p-around_xxx-small slds-button slds-button_outline-brand slds-float_right" onclick={addbtn}></lightning-button>
+                            </td>
+                        </tr>
+                    </table> 
+                </div>
+                <br/>
+                <div class="slds-col slds-m-horizontal_large" style="margin-bottom:2%" id="div">
+                    <lightning-input-rich-text value={}></lightning-input-rich-text>
+                </div>
+                
+                <div class="slds-card__footer" style="text-align:right">
+                    <button class="slds-button slds-button_outline-brand" onclick={back}>Previous</button>
+                    <button class="slds-button slds-button_outline-brand" onclick={Next}>Next</button>
+                </div>
+            </template>
+    </div>
+    </template>

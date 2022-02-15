@@ -1,0 +1,56 @@
+.a { 
+    background : #fff; 
+    padding: 0 10px;
+    float:left;
+    }
+    .b { 
+    background : #fff;
+    padding: 0 10px;
+    width:30%;
+    }
+    .c { 
+    background : #fff;
+    padding: 0 10px;
+    width:20%;
+    }
+    .button5 {
+    font-size: 16px;
+    margin: 2px 2px;
+    border-radius: 50%;
+    }
+    .btn {
+    border: none;
+    background-color: white;
+    font-size: 16px;
+    }
+    .btn:hover {
+    background: white;
+    }
+    .vl {
+    border-left: 1px solid black;
+    height: 30px;
+    margin-top:3%;
+    }
+    button[disabled], html input[disabled]{
+    color:#D9DBDD !important;
+    }
+    .slds-icon-action-check {
+    background-color:Blue;
+    }
+    .a .slds-icon{
+    height: 1rem;
+    width: 1rem;
+    }
+    .b .slds-icon{
+    height: 1rem;
+    width: 1rem;
+    }
+    .slds-rich-text-editor{
+    overflow-y:scroll;
+    height:150px;
+    display:block;
+    }
+    [class*=slds-icon-action-] .slds-icon{
+    border: none;
+    margin-top: -82%;
+    }
